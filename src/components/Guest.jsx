@@ -1,22 +1,29 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   GUESTS_ACTION_TYPES,
   useGuestsDispatch,
 } from '../context/GuestsContext';
 import { useGuestsRooms } from '../context/GuestsRoomsContext';
+import { useGameStore } from '../store/store';
 import { DebugContainer } from './DebugContainer';
 import RoomBrief from './RoomBrief';
 
 const Guest = ({ guest }) => {
-  const guestsDispatch = useGuestsDispatch();
+  // const guestsDispatch = useGuestsDispatch();
+  // const { empty } = useGuestsRooms();
+  const guests = useGameStore((state) => state.guests);
+  const rooms = useGameStore((state) => state.rooms);
+  const assignGuestToRoom = useGameStore((state) => state.assignGuestToRoom);
+
   const { empty } = useGuestsRooms();
 
   const assignRoom = (guest) => {
-    guestsDispatch({
-      type: GUESTS_ACTION_TYPES.ASSIGN,
-      id: guest.id,
-      roomId: empty?.[0]?.roomId,
-    });
+    // guestsDispatch({
+    //   type: GUESTS_ACTION_TYPES.ASSIGN,
+    //   id: guest.id,
+    //   roomId: empty?.[0]?.roomId,
+    // });
+    assignGuestToRoom(guest.id, empty?.[0]?.roomId);
   };
 
   return (

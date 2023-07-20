@@ -18,6 +18,7 @@ import {
   useGameDispatch,
 } from './context/GameContext';
 import { GuestsRoomsProvider } from './context/GuestsRoomsContext';
+import { useGameStore } from './store/store';
 
 const App = () => {
   return (
@@ -47,19 +48,26 @@ const AppProviders = ({ children }) => {
 
 const AppInterior = () => {
   // const [gameState, setGameState] = useState(initialGameState);
-  const game = useGame();
-  const gameDispatch = useGameDispatch();
-  const inn = useInn();
-  const rooms = useRooms();
-  const guests = useGuests();
-  const staff = useStaff();
+  // const game = useGame();
+  // const gameDispatch = useGameDispatch();
+  // const inn = useInn();
+  // const rooms = useRooms();
+  // const guests = useGuests();
+  // const staff = useStaff();
+  const game = useGameStore((state) => state.game);
+  const incrementTime = useGameStore((state) => state.incrementTime);
+  const inn = useGameStore((state) => state.inn);
+  const rooms = useGameStore((state) => state.rooms);
+  const guests = useGameStore((state) => state.guests);
+  const staff = useGameStore((state) => state.staff);
 
   return (
     <>
       <Inn inn={inn} />
       <Time
         currentDate={game.currentDate}
-        nextDay={() => gameDispatch({ type: GAME_ACTION_TYPES.TIME_INCREMENT })}
+        // nextDay={() => gameDispatch({ type: GAME_ACTION_TYPES.TIME_INCREMENT })}
+        nextDay={() => incrementTime()}
       />
       <TabbedView tabs={['Rooms', 'Guests', 'Staff']}>
         <RoomsView rooms={rooms} />

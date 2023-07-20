@@ -1,9 +1,11 @@
 import React from 'react';
 import { ROOMS_ACTION_TYPES, useRoomsDispatch } from '../context/RoomsContext';
+import { useGameStore } from '../store/store';
 import { DebugContainer } from './DebugContainer';
 
 const Room = ({ room }) => {
-  const roomsDispatch = useRoomsDispatch();
+  // const roomsDispatch = useRoomsDispatch();
+  const removeRoom = useGameStore((state) => state.removeRoom);
 
   return (
     <div className="room">
@@ -12,7 +14,8 @@ const Room = ({ room }) => {
       <DebugContainer>
         <button
           onClick={() =>
-            roomsDispatch({ type: ROOMS_ACTION_TYPES.REMOVE, id: room.id })
+            // roomsDispatch({ type: ROOMS_ACTION_TYPES.REMOVE, id: room.id })
+            removeRoom(room.id)
           }
         >
           delete
