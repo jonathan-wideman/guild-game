@@ -1,0 +1,95 @@
+import { useEffect, useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import { ECS } from './ecs';
+
+const delay = 1000;
+
+function WorldSystems() {
+  const { entities } = ECS.useArchetype('player', 'score');
+
+  const [lastUpdate, setLastUpdate] = useState(Date.now());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // tick ~60fps
+      console.log('tick', lastUpdate);
+      setLastUpdate(Date.now());
+
+      for (const entity of entities) {
+        entity.score += 1;
+      }
+    }, delay);
+
+    return () => {
+      clearTimeout(interval);
+    };
+  }, [lastUpdate]);
+
+  return null;
+}
+
+// function Player({ player }) {
+//   return (
+//     <ECS.Entity entity={player}>
+//       {player.label} {player.score}
+//     </ECS.Entity>
+//   );
+// }
+function Player() {
+  return (
+    <ECS.Entity>
+      <ECS.Component name="player" data={true} />
+      {/* {player.label} {player.score} */}
+    </ECS.Entity>
+  );
+}
+
+function App() {
+  // const [count, setCount] = useState(0);
+  // const [player] = useState(() =>
+  //   ECS.world.createEntity({
+  //     player: true,
+  //     label: 'player',
+  //     position: { x: 0, y: 0, z: 0 },
+  //     health: 100,
+  //     score: 0,
+  //   })
+  // );
+
+  // useEffect(() => scheduleTick(), []);
+
+  console.log('App rendered');
+
+  return (
+    <>
+      {/* <WorldSystems /> */}
+      {/* <Player player={player} /> */}
+      <Player />
+
+      {/* <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p> */}
+    </>
+  );
+}
+
+export default App;
