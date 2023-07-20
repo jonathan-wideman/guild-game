@@ -1,23 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Inn from './components/Inn';
 import Time from './components/Time';
-import { initialGameState } from './store';
 import { DebugProvider } from './context/DebugContext';
-import { GuestsProvider, useGuests } from './context/GuestsContext';
-import { RoomsProvider, useRooms } from './context/RoomsContext';
-import { StaffProvider, useStaff } from './context/StaffContext';
 import TabbedView from './components/TabbedView';
 import GuestsView from './components/GuestsView';
 import RoomsView from './components/RoomsView';
 import StaffView from './components/StaffView';
-import { InnProvider, useInn } from './context/InnContext';
-import {
-  GameProvider,
-  GAME_ACTION_TYPES,
-  useGame,
-  useGameDispatch,
-} from './context/GameContext';
-import { GuestsRoomsProvider } from './context/GuestsRoomsContext';
 import { useGameStore } from './store/store';
 
 const App = () => {
@@ -31,29 +19,12 @@ const App = () => {
 const AppProviders = ({ children }) => {
   return (
     <DebugProvider>
-      <GameProvider>
-        <InnProvider>
-          <RoomsProvider>
-            <StaffProvider>
-              <GuestsProvider>
-                <GuestsRoomsProvider>{children}</GuestsRoomsProvider>
-              </GuestsProvider>
-            </StaffProvider>
-          </RoomsProvider>
-        </InnProvider>
-      </GameProvider>
+      {children}
     </DebugProvider>
   );
 };
 
 const AppInterior = () => {
-  // const [gameState, setGameState] = useState(initialGameState);
-  // const game = useGame();
-  // const gameDispatch = useGameDispatch();
-  // const inn = useInn();
-  // const rooms = useRooms();
-  // const guests = useGuests();
-  // const staff = useStaff();
   const game = useGameStore((state) => state.game);
   const incrementTime = useGameStore((state) => state.incrementTime);
   const inn = useGameStore((state) => state.inn);
@@ -66,12 +37,11 @@ const AppInterior = () => {
       <Inn inn={inn} />
       <Time
         currentDate={game.currentDate}
-        // nextDay={() => gameDispatch({ type: GAME_ACTION_TYPES.TIME_INCREMENT })}
         nextDay={() => incrementTime()}
       />
-      <TabbedView tabs={['Rooms', 'Guests', 'Staff']}>
-        <RoomsView rooms={rooms} />
+      <TabbedView tabs={['Guests', 'Rooms', 'Staff']}>
         <GuestsView guests={guests} />
+        <RoomsView rooms={rooms} />
         <StaffView staff={staff} />
       </TabbedView>
     </>

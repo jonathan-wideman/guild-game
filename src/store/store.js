@@ -6,7 +6,7 @@ import {
   initialInn,
   initialRooms,
   initialStaff,
-} from '../store';
+} from './data';
 
 export const useGameStore = create((set) => ({
   game: { ...initialGameState },
@@ -17,10 +17,10 @@ export const useGameStore = create((set) => ({
 
   incrementTime: () =>
     set((state) => ({
-      game: { ...state.game, currentDate: nextDate(state.game.currentDate) },
+      game: { ...state.game, currentDate: getNextDate(state.game.currentDate) },
     })),
 
-  // addMoney: () => set((state) => state),
+  addMoney: (amount) => set((state) => ({ inn: { ...state.inn, money: state.inn.money + amount } })),
 
   addRoom: (room) => set((state) => ({ rooms: [...state.rooms, { ...room }] })),
   removeRoom: (id) =>
@@ -54,7 +54,11 @@ export const useGameStore = create((set) => ({
 //   return useMemo(() => getOccupancy(guests, rooms), [guests, rooms]);
 // }
 
-export function nextDate(date) {
+export function getRoomById(rooms, roomId) {
+  return rooms.find(room => room.id === roomId)
+}
+
+export function getNextDate(date) {
   const newDate = new Date(date);
   newDate.setDate(newDate.getDate() + 1);
   return newDate;

@@ -1,18 +1,12 @@
 import React, { useMemo } from 'react';
-import {
-  GUESTS_ACTION_TYPES,
-  useGuestsDispatch,
-} from '../context/GuestsContext';
-import { useGuestsRooms } from '../context/GuestsRoomsContext';
-import { getOccupancy, useGameStore } from '../store/store';
+import { getOccupancy, getRoomById, useGameStore } from '../store/store';
 import { DebugContainer } from './DebugContainer';
 import RoomBrief from './RoomBrief';
 
 const Guest = ({ guest }) => {
-  // const guestsDispatch = useGuestsDispatch();
-  // const { empty } = useGuestsRooms();
   const guests = useGameStore((state) => state.guests);
   const rooms = useGameStore((state) => state.rooms);
+  const removeGuest = useGameStore((state) => state.removeGuest);
   const assignGuestToRoom = useGameStore((state) => state.assignGuestToRoom);
 
   const guestsRooms = useMemo(
@@ -22,11 +16,6 @@ const Guest = ({ guest }) => {
   const { empty } = guestsRooms;
 
   const assignRoom = (guest) => {
-    // guestsDispatch({
-    //   type: GUESTS_ACTION_TYPES.ASSIGN,
-    //   id: guest.id,
-    //   roomId: empty?.[0]?.roomId,
-    // });
     assignGuestToRoom(guest.id, empty?.[0]?.roomId);
   };
 
@@ -37,18 +26,17 @@ const Guest = ({ guest }) => {
       <DebugContainer>
         <button
           onClick={() =>
-            guestsDispatch({ type: GUESTS_ACTION_TYPES.REMOVE, id: guest.id })
+            removeGuest(guest.id)
           }
         >
           delete
         </button>
       </DebugContainer>
 
-      {/* <p>Room Id: {guest.roomId}</p> */}
       <p>
         Room:{' '}
         {guest.roomId ? (
-          <RoomBrief roomId={guest.roomId} />
+          <RoomBrief room={getRoomById(rooms, guest.roomId)} />
         ) : empty.length > 0 ? (
           <button onClick={() => assignRoom(guest)}>Assign Room</button>
         ) : (

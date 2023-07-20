@@ -1,10 +1,8 @@
 import React from 'react';
-import { STAFF_ACTION_TYPES, useStaffDispatch } from '../context/StaffContext';
 import { useGameStore } from '../store/store';
 import { DebugContainer } from './DebugContainer';
 
 const Staff = ({ staff }) => {
-  // const staffDispatch = useStaffDispatch();
   const removeStaff = useGameStore((state) => state.removeStaff);
 
   return (
@@ -14,7 +12,6 @@ const Staff = ({ staff }) => {
       <DebugContainer>
         <button
           onClick={() =>
-            // staffDispatch({ type: STAFF_ACTION_TYPES.REMOVE, id: staff.id })
             removeStaff(staff.id)
           }
         >

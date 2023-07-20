@@ -68,6 +68,8 @@ button:focus-visible {
   }
 }
 
+/* ===== ===== ===== ===== ===== */
+
 nav {
   margin-top: 16px;
 }
@@ -84,4 +86,11 @@ button.active {
   border-radius: 4px;
   background-color: #eee;
   color: #333;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
 }
