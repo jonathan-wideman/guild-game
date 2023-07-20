@@ -4,7 +4,7 @@ import {
   useGuestsDispatch,
 } from '../context/GuestsContext';
 import { useGuestsRooms } from '../context/GuestsRoomsContext';
-import { useGameStore } from '../store/store';
+import { getOccupancy, useGameStore } from '../store/store';
 import { DebugContainer } from './DebugContainer';
 import RoomBrief from './RoomBrief';
 
@@ -15,7 +15,11 @@ const Guest = ({ guest }) => {
   const rooms = useGameStore((state) => state.rooms);
   const assignGuestToRoom = useGameStore((state) => state.assignGuestToRoom);
 
-  const { empty } = useGuestsRooms();
+  const guestsRooms = useMemo(
+    () => getOccupancy(guests, rooms),
+    [guests, rooms]
+  );
+  const { empty } = guestsRooms;
 
   const assignRoom = (guest) => {
     // guestsDispatch({

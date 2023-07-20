@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { create } from 'zustand';
 import {
   initialGameState,
@@ -47,11 +48,11 @@ export const useGameStore = create((set) => ({
     })),
 }));
 
-export function useGuestsRooms() {
-  const guests = useGameStore((state) => state.guests);
-  const rooms = useGameStore((state) => state.rooms);
-  return getOccupancy(guests, rooms);
-}
+// export function useGuestsRooms() {
+//   const guests = useGameStore((state) => state.guests);
+//   const rooms = useGameStore((state) => state.rooms);
+//   return useMemo(() => getOccupancy(guests, rooms), [guests, rooms]);
+// }
 
 export function nextDate(date) {
   const newDate = new Date(date);
