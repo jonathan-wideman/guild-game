@@ -17,11 +17,7 @@ const App = () => {
 };
 
 const AppProviders = ({ children }) => {
-  return (
-    <DebugProvider>
-      {children}
-    </DebugProvider>
-  );
+  return <DebugProvider>{children}</DebugProvider>;
 };
 
 const AppInterior = () => {
@@ -35,21 +31,20 @@ const AppInterior = () => {
   // actions
   const incrementTime = useGameStore((state) => state.incrementTime);
   const addDailyPayments = useGameStore((state) => state.addDailyPayments);
-  const decrementGuestStays = useGameStore((state) => state.decrementGuestStays);
+  const decrementGuestStays = useGameStore(
+    (state) => state.decrementGuestStays
+  );
 
   const processTimeStep = () => {
     incrementTime();
     addDailyPayments();
     decrementGuestStays();
-  }
+  };
 
   return (
     <>
       <Inn inn={inn} />
-      <Time
-        currentDate={game.currentDate}
-        nextDay={() => processTimeStep()}
-      />
+      <Time currentDate={game.currentDate} nextDay={() => processTimeStep()} />
       <TabbedView tabs={['Guests', 'Rooms', 'Staff']}>
         <GuestsView guests={guests} />
         <RoomsView rooms={rooms} />

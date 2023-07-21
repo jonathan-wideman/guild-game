@@ -10,13 +10,7 @@ const Room = ({ room }) => {
       <h3>Room {room.number}</h3>
 
       <DebugContainer>
-        <button
-          onClick={() =>
-            removeRoom(room.id)
-          }
-        >
-          delete
-        </button>
+        <button onClick={() => removeRoom(room.id)}>delete</button>
       </DebugContainer>
 
       <p>Type: {room.type}</p>

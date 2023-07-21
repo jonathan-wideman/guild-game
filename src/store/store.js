@@ -20,18 +20,23 @@ export const useGameStore = create((set) => ({
       game: { ...state.game, currentDate: getNextDate(state.game.currentDate) },
     })),
 
-  addMoney: (amount) => set((state) => ({ inn: { ...state.inn, money: state.inn.money + amount } })),
+  addMoney: (amount) =>
+    set((state) => ({
+      inn: { ...state.inn, money: state.inn.money + amount },
+    })),
 
-  addDailyPayments: () => set((state) => {
-    const payment = getGuestDailyPayments(state.guests, state.rooms)
-    return { inn: { ...state.inn, money: state.inn.money + payment } }
-  }),
+  addDailyPayments: () =>
+    set((state) => {
+      const payment = getGuestDailyPayments(state.guests, state.rooms);
+      return { inn: { ...state.inn, money: state.inn.money + payment } };
+    }),
 
-  decrementGuestStays: () => set((state) => ({
-    guests: state.guests
-      .map(guest => ({ ...guest, stayDuration: guest.stayDuration - 1 }))
-      .filter(guest => guest.stayDuration > 0)
-  })),
+  decrementGuestStays: () =>
+    set((state) => ({
+      guests: state.guests
+        .map((guest) => ({ ...guest, stayDuration: guest.stayDuration - 1 }))
+        .filter((guest) => guest.stayDuration > 0),
+    })),
 
   addRoom: (room) => set((state) => ({ rooms: [...state.rooms, { ...room }] })),
   removeRoom: (id) =>
@@ -66,7 +71,7 @@ export const useGameStore = create((set) => ({
 // }
 
 export function getRoomById(rooms, roomId) {
-  return rooms.find(room => room.id === roomId)
+  return rooms.find((room) => room.id === roomId);
 }
 
 export function getNextDate(date) {
@@ -77,10 +82,10 @@ export function getNextDate(date) {
 
 export function getGuestDailyPayments(guests, rooms) {
   const total = guests.reduce((sum, guest) => {
-    const price = getRoomById(rooms, guest.roomId)?.price ?? 0
-    return sum + price
-  }, 0)
-  return total
+    const price = getRoomById(rooms, guest.roomId)?.price ?? 0;
+    return sum + price;
+  }, 0);
+  return total;
 }
 
 export function getOccupancy(guests, rooms) {

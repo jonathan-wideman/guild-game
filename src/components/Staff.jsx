@@ -10,13 +10,7 @@ const Staff = ({ staff }) => {
       <h3>{staff.name}</h3>
 
       <DebugContainer>
-        <button
-          onClick={() =>
-            removeStaff(staff.id)
-          }
-        >
-          delete
-        </button>
+        <button onClick={() => removeStaff(staff.id)}>delete</button>
       </DebugContainer>
 
       <p>Role: {staff.role}</p>

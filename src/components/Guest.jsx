@@ -24,13 +24,7 @@ const Guest = ({ guest }) => {
       <h3>{guest.name}</h3>
 
       <DebugContainer>
-        <button
-          onClick={() =>
-            removeGuest(guest.id)
-          }
-        >
-          delete
-        </button>
+        <button onClick={() => removeGuest(guest.id)}>delete</button>
       </DebugContainer>
 
       <p>
