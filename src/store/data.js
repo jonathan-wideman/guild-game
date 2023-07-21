@@ -36,12 +36,12 @@ export const initialGuests = [
     roomId: null,
     checkInDate: new Date(2023, 6, 14),
     checkOutDate: new Date(2023, 6, 16),
+    stayDuration: 3,
     satisfaction: 80,
     preferences: {
       roomType: 'single',
       food: 'vegetarian',
     },
-    payment: 200,
   },
   {
     id: crypto.randomUUID(),
@@ -49,12 +49,12 @@ export const initialGuests = [
     roomId: null,
     checkInDate: new Date(2023, 6, 13),
     checkOutDate: new Date(2023, 6, 15),
+    stayDuration: 5,
     satisfaction: 90,
     preferences: {
       roomType: 'double',
       food: 'meat lover',
     },
-    payment: 300,
   },
   {
     id: crypto.randomUUID(),
@@ -62,12 +62,12 @@ export const initialGuests = [
     roomId: null,
     checkInDate: null,
     checkOutDate: null,
+    stayDuration: 1,
     satisfaction: 100,
     preferences: {
       roomType: 'single',
       food: 'barbecue',
     },
-    payment: 400,
   },
   // Add more guests as needed
 ];

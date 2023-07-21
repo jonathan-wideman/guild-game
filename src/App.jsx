@@ -25,19 +25,30 @@ const AppProviders = ({ children }) => {
 };
 
 const AppInterior = () => {
+  // state
   const game = useGameStore((state) => state.game);
-  const incrementTime = useGameStore((state) => state.incrementTime);
   const inn = useGameStore((state) => state.inn);
   const rooms = useGameStore((state) => state.rooms);
   const guests = useGameStore((state) => state.guests);
   const staff = useGameStore((state) => state.staff);
+
+  // actions
+  const incrementTime = useGameStore((state) => state.incrementTime);
+  const addDailyPayments = useGameStore((state) => state.addDailyPayments);
+  const decrementGuestStays = useGameStore((state) => state.decrementGuestStays);
+
+  const processTimeStep = () => {
+    incrementTime();
+    addDailyPayments();
+    decrementGuestStays();
+  }
 
   return (
     <>
       <Inn inn={inn} />
       <Time
         currentDate={game.currentDate}
-        nextDay={() => incrementTime()}
+        nextDay={() => processTimeStep()}
       />
       <TabbedView tabs={['Guests', 'Rooms', 'Staff']}>
         <GuestsView guests={guests} />

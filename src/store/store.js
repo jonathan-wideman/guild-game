@@ -22,6 +22,17 @@ export const useGameStore = create((set) => ({
 
   addMoney: (amount) => set((state) => ({ inn: { ...state.inn, money: state.inn.money + amount } })),
 
+  addDailyPayments: () => set((state) => {
+    const payment = getGuestDailyPayments(state.guests, state.rooms)
+    return { inn: { ...state.inn, money: state.inn.money + payment } }
+  }),
+
+  decrementGuestStays: () => set((state) => ({
+    guests: state.guests
+      .map(guest => ({ ...guest, stayDuration: guest.stayDuration - 1 }))
+      .filter(guest => guest.stayDuration > 0)
+  })),
+
   addRoom: (room) => set((state) => ({ rooms: [...state.rooms, { ...room }] })),
   removeRoom: (id) =>
     set((state) => ({ rooms: state.rooms.filter((room) => room.id !== id) })),
@@ -62,6 +73,14 @@ export function getNextDate(date) {
   const newDate = new Date(date);
   newDate.setDate(newDate.getDate() + 1);
   return newDate;
+}
+
+export function getGuestDailyPayments(guests, rooms) {
+  const total = guests.reduce((sum, guest) => {
+    const price = getRoomById(rooms, guest.roomId)?.price ?? 0
+    return sum + price
+  }, 0)
+  return total
 }
 
 export function getOccupancy(guests, rooms) {

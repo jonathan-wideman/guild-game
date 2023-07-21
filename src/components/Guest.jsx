@@ -43,15 +43,15 @@ const Guest = ({ guest }) => {
           <>No available rooms</>
         )}
       </p>
-      <p>Check-in Date: {guest.checkInDate?.toDateString()}</p>
-      <p>Check-out Date: {guest.checkOutDate?.toDateString()}</p>
+      {/* <p>Check-in Date: {guest.checkInDate?.toDateString()}</p> */}
+      {/* <p>Check-out Date: {guest.checkOutDate?.toDateString()}</p> */}
+      <p>Stay Duration: {guest.stayDuration}</p>
       <p>Satisfaction: {guest.satisfaction}</p>
       <p>Preferences:</p>
       <ul>
         <li>Room Type: {guest.preferences.roomType}</li>
         <li>Food: {guest.preferences.food}</li>
       </ul>
-      <p>Payment: ${guest.payment}</p>
     </div>
   );
 };
