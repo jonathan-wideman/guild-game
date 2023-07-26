@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { create } from 'zustand';
 import {
   initialGameState,
@@ -7,6 +6,7 @@ import {
   initialRooms,
   initialStaff,
 } from './data';
+import { generateGuests } from './generator';
 
 export const useGameStore = create((set) => ({
   game: { ...initialGameState },
@@ -15,28 +15,35 @@ export const useGameStore = create((set) => ({
   guests: [...initialGuests],
   staff: [...initialStaff],
 
+  partials: {
+    addMoney: (amount) => (state) => ({
+      inn: { ...state.inn, money: state.inn.money + amount },
+    }),
+  },
+
   incrementTime: () =>
     set((state) => ({
       game: { ...state.game, currentDate: getNextDate(state.game.currentDate) },
     })),
 
   addMoney: (amount) =>
-    set((state) => ({
-      inn: { ...state.inn, money: state.inn.money + amount },
-    })),
+    set((state) => state.partials.addMoney(amount)(state)),
 
   addDailyPayments: () =>
     set((state) => {
       const payment = getGuestDailyPayments(state.guests, state.rooms);
-      return { inn: { ...state.inn, money: state.inn.money + payment } };
+      return state.partials.addMoney(payment)(state);
     }),
 
-  decrementGuestStays: () =>
+  removeUnroomedAndDecrementGuestStays: () =>
     set((state) => ({
       guests: state.guests
+        .filter((guest) => guest.roomId != null)
         .map((guest) => ({ ...guest, stayDuration: guest.stayDuration - 1 }))
         .filter((guest) => guest.stayDuration > 0),
     })),
+
+  addDailyGuests: () => set((state) => ({ guests: [...state.guests, ...generateGuests()] })),
 
   addRoom: (room) => set((state) => ({ rooms: [...state.rooms, { ...room }] })),
   removeRoom: (id) =>
@@ -63,12 +70,6 @@ export const useGameStore = create((set) => ({
       ),
     })),
 }));
-
-// export function useGuestsRooms() {
-//   const guests = useGameStore((state) => state.guests);
-//   const rooms = useGameStore((state) => state.rooms);
-//   return useMemo(() => getOccupancy(guests, rooms), [guests, rooms]);
-// }
 
 export function getRoomById(rooms, roomId) {
   return rooms.find((room) => room.id === roomId);

@@ -31,14 +31,16 @@ const AppInterior = () => {
   // actions
   const incrementTime = useGameStore((state) => state.incrementTime);
   const addDailyPayments = useGameStore((state) => state.addDailyPayments);
-  const decrementGuestStays = useGameStore(
-    (state) => state.decrementGuestStays
+  const removeUnroomedAndDecrementGuestStays = useGameStore(
+    (state) => state.removeUnroomedAndDecrementGuestStays
   );
+  const addDailyGuests = useGameStore((state) => state.addDailyGuests);
 
   const processTimeStep = () => {
     incrementTime();
     addDailyPayments();
-    decrementGuestStays();
+    removeUnroomedAndDecrementGuestStays();
+    addDailyGuests();
   };
 
   return (
