@@ -2,11 +2,12 @@ import React from 'react';
 
 const Inn = ({ inn }) => {
   return (
-    <div className="inn">
-      <h1>Welcome to {inn.name}!</h1>
-      <p>Level: {inn.level}</p>
-      <p>Money: {inn.money}</p>
-      <p>Capacity: {inn.capacity}</p>
+    <div className='inn'>
+      <div className='glass flex-row p1'>
+        <div>Level: {inn.level}</div>
+        <div>Money: {inn.money}</div>
+        <div>Capacity: {inn.capacity}</div>
+      </div>
     </div>
   );
 };

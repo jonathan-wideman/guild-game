@@ -3,8 +3,7 @@ import Room from './Room';
 
 const RoomsView = ({ rooms }) => {
   return (
-    <div className="room-list">
-      <h2>Rooms</h2>
+    <div className="room-list flex-column">
       {rooms.map((room) => (
         <Room key={room.number} room={room} />
       ))}

@@ -6,19 +6,19 @@ const Staff = ({ staff }) => {
   const removeStaff = useGameStore((state) => state.removeStaff);
 
   return (
-    <div className="staff">
+    <div className="staff glass flex-column p1">
       <h3>{staff.name}</h3>
 
       <DebugContainer>
         <button onClick={() => removeStaff(staff.id)}>delete</button>
       </DebugContainer>
 
-      <p>Role: {staff.role}</p>
-      <p>Salary: ${staff.salary}</p>
-      <p>Skill Level: {staff.skillLevel}</p>
-      <p>Happiness: {staff.happiness}</p>
-      <p>Energy: {staff.energy}</p>
-      <p>Experience: {staff.experience}</p>
+      <div>Role: {staff.role}</div>
+      <div>Salary: ${staff.salary}</div>
+      <div>Skill Level: {staff.skillLevel}</div>
+      <div>Happiness: {staff.happiness}</div>
+      <div>Energy: {staff.energy}</div>
+      <div>Experience: {staff.experience}</div>
     </div>
   );
 };

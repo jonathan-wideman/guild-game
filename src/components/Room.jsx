@@ -6,16 +6,16 @@ const Room = ({ room }) => {
   const removeRoom = useGameStore((state) => state.removeRoom);
 
   return (
-    <div className="room">
+    <div className="room glass flex-column p1">
       <h3>Room {room.number}</h3>
 
       <DebugContainer>
         <button onClick={() => removeRoom(room.id)}>delete</button>
       </DebugContainer>
 
-      <p>Type: {room.type}</p>
-      <p>Availability: {room.availability ? 'Available' : 'Occupied'}</p>
-      <p>Price: ${room.price} per night</p>
+      <div>Type: {room.type}</div>
+      <div>Availability: {room.availability ? 'Available' : 'Occupied'}</div>
+      <div>Price: ${room.price} per night</div>
     </div>
   );
 };

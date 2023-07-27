@@ -20,14 +20,14 @@ const Guest = ({ guest }) => {
   };
 
   return (
-    <div className="guest">
+    <div className="guest glass  flex-column p1">
       <h3>{guest.name}</h3>
 
       <DebugContainer>
         <button onClick={() => removeGuest(guest.id)}>delete</button>
       </DebugContainer>
 
-      <p>
+      <div>
         Room:{' '}
         {guest.roomId ? (
           <RoomBrief room={getRoomById(rooms, guest.roomId)} />
@@ -36,16 +36,14 @@ const Guest = ({ guest }) => {
         ) : (
           <>No available rooms</>
         )}
-      </p>
-      {/* <p>Check-in Date: {guest.checkInDate?.toDateString()}</p> */}
-      {/* <p>Check-out Date: {guest.checkOutDate?.toDateString()}</p> */}
-      <p>Stay Duration: {guest.stayDuration}</p>
-      <p>Satisfaction: {guest.satisfaction}</p>
-      <p>Preferences:</p>
-      <ul>
-        <li>Room Type: {guest.preferences.roomType}</li>
-        <li>Food: {guest.preferences.food}</li>
-      </ul>
+      </div>
+      {/* <div>Check-in Date: {guest.checkInDate?.toDateString()}</div> */}
+      {/* <div>Check-out Date: {guest.checkOutDate?.toDateString()}</div> */}
+      <div>Stay Duration: {guest.stayDuration}</div>
+      <div>Satisfaction: {guest.satisfaction}</div>
+      {/* <div>Preferences:</div> */}
+      {/* <div>Room Type: {guest.preferences.roomType}</div> */}
+      {/* <div>Food: {guest.preferences.food}</div> */}
     </div>
   );
 };

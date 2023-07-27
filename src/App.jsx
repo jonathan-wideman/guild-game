@@ -1,4 +1,5 @@
-import React from 'react';
+import './App.css';
+import React, { useMemo } from 'react';
 import Inn from './components/Inn';
 import Time from './components/Time';
 import { DebugProvider } from './context/DebugContext';
@@ -7,6 +8,7 @@ import GuestsView from './components/GuestsView';
 import RoomsView from './components/RoomsView';
 import StaffView from './components/StaffView';
 import { useGameStore } from './store/store';
+import Title from './components/Title';
 
 const App = () => {
   return (
@@ -44,15 +46,20 @@ const AppInterior = () => {
   };
 
   return (
-    <>
-      <Inn inn={inn} />
-      <Time currentDate={game.currentDate} nextDay={() => processTimeStep()} />
-      <TabbedView tabs={['Guests', 'Rooms', 'Staff']}>
-        <GuestsView guests={guests} />
-        <RoomsView rooms={rooms} />
-        <StaffView staff={staff} />
-      </TabbedView>
-    </>
+    <div className='background'>
+      <div className='container'>
+        <Title name={inn.name} />
+        <div className='flex-column'>
+          <Inn inn={inn} />
+          <Time currentDate={game.currentDate} nextDay={() => processTimeStep()} />
+          <TabbedView tabs={['Guests', 'Rooms', 'Staff']}>
+            <GuestsView guests={guests} />
+            <RoomsView rooms={rooms} />
+            <StaffView staff={staff} />
+          </TabbedView>
+        </div>
+      </div>
+    </div>
   );
 };
 
