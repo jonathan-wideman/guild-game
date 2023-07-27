@@ -30,6 +30,9 @@ const AppInterior = () => {
   const guests = useGameStore((state) => state.guests);
   const staff = useGameStore((state) => state.staff);
 
+  const roomedGuests = useMemo(() => guests.filter(guest => guest.roomId != null));
+  const unroomedGuests = useMemo(() => guests.filter(guest => guest.roomId == null));
+
   // actions
   const incrementTime = useGameStore((state) => state.incrementTime);
   const addDailyPayments = useGameStore((state) => state.addDailyPayments);
@@ -53,7 +56,7 @@ const AppInterior = () => {
           <Inn inn={inn} />
           <Time currentDate={game.currentDate} nextDay={() => processTimeStep()} />
           <TabbedView tabs={['Guests', 'Rooms', 'Staff']}>
-            <GuestsView guests={guests} />
+            <GuestsView roomedGuests={roomedGuests} unroomedGuests={unroomedGuests} />
             <RoomsView rooms={rooms} />
             <StaffView staff={staff} />
           </TabbedView>
