@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 
-const INITIAL_DEBUG_MODE = true;
+const INITIAL_DEBUG_MODE = false;
 
 const DebugContext = createContext(null);
 
