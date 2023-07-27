@@ -5,15 +5,23 @@ const GuestsView = ({ roomedGuests, unroomedGuests }) => {
   return (
     <div className="guest-list flex-column">
 
-      <h3>Unroomed</h3>
-      {unroomedGuests.map((guest) => (
-        <Guest key={guest.name} guest={guest} />
-      ))}
+      {unroomedGuests.length > 0 ?
+        <>
+          <h3>Unroomed</h3>
+          {unroomedGuests.map((guest) => (
+            <Guest key={guest.name} guest={guest} />
+          ))}
+        </>
+        : null}
 
-      <h3>Roomed</h3>
-      {roomedGuests.map((guest) => (
-        <Guest key={guest.name} guest={guest} />
-      ))}
+      {roomedGuests.length > 0 ?
+        <>
+          <h3>Roomed</h3>
+          {roomedGuests.map((guest) => (
+            <Guest key={guest.name} guest={guest} />
+          ))}
+        </>
+        : null}
 
     </div>
   );
