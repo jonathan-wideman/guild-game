@@ -10,7 +10,7 @@ const TabbedView = ({ children, tabs }) => {
 
   return (
     <>
-      <div>
+      <div className='flex-column'>
         <h2>{tabs[activeTab]}</h2>
 
         <nav className='flex-row'>

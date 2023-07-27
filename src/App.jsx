@@ -51,8 +51,8 @@ const AppInterior = () => {
   return (
     <div className='background'>
       <div className='container'>
-        <Title name={inn.name} />
         <div className='flex-column'>
+          <Title name={inn.name} />
           <Inn inn={inn} />
           <Time currentDate={game.currentDate} nextDay={() => processTimeStep()} />
           <TabbedView tabs={['Guests', 'Rooms', 'Staff']}>
