@@ -10,15 +10,18 @@ const TabbedView = ({ children, tabs }) => {
 
   return (
     <>
-      <div className='flex-column'>
+      <div className="flex-column">
         <h2>{tabs[activeTab]}</h2>
 
-        <nav className='flex-row'>
+        <nav className="flex-row">
           {tabs.map((tab, index) => (
             <button
               key={tab}
               onClick={() => changeTab(index)}
-              className={classNames('flex-grow', activeTab === index ? 'active' : '')}
+              className={classNames(
+                'flex-grow',
+                activeTab === index ? 'active' : ''
+              )}
             >
               {tab}
             </button>

@@ -26,8 +26,7 @@ export const useGameStore = create((set) => ({
       game: { ...state.game, currentDate: getNextDate(state.game.currentDate) },
     })),
 
-  addMoney: (amount) =>
-    set((state) => state.partials.addMoney(amount)(state)),
+  addMoney: (amount) => set((state) => state.partials.addMoney(amount)(state)),
 
   addDailyPayments: () =>
     set((state) => {
@@ -43,7 +42,8 @@ export const useGameStore = create((set) => ({
         .filter((guest) => guest.stayDuration > 0),
     })),
 
-  addDailyGuests: () => set((state) => ({ guests: [...state.guests, ...generateGuests()] })),
+  addDailyGuests: () =>
+    set((state) => ({ guests: [...state.guests, ...generateGuests()] })),
 
   addRoom: (room) => set((state) => ({ rooms: [...state.rooms, { ...room }] })),
   removeRoom: (id) =>

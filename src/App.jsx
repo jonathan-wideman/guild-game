@@ -30,8 +30,12 @@ const AppInterior = () => {
   const guests = useGameStore((state) => state.guests);
   const staff = useGameStore((state) => state.staff);
 
-  const roomedGuests = useMemo(() => guests.filter(guest => guest.roomId != null));
-  const unroomedGuests = useMemo(() => guests.filter(guest => guest.roomId == null));
+  const roomedGuests = useMemo(() =>
+    guests.filter((guest) => guest.roomId != null)
+  );
+  const unroomedGuests = useMemo(() =>
+    guests.filter((guest) => guest.roomId == null)
+  );
 
   // actions
   const incrementTime = useGameStore((state) => state.incrementTime);
@@ -49,14 +53,20 @@ const AppInterior = () => {
   };
 
   return (
-    <div className='background'>
-      <div className='container'>
-        <div className='flex-column'>
+    <div className="background">
+      <div className="container">
+        <div className="flex-column">
           <Title name={inn.name} />
           <Inn inn={inn} />
-          <Time currentDate={game.currentDate} nextDay={() => processTimeStep()} />
+          <Time
+            currentDate={game.currentDate}
+            nextDay={() => processTimeStep()}
+          />
           <TabbedView tabs={['Guests', 'Rooms', 'Staff']}>
-            <GuestsView roomedGuests={roomedGuests} unroomedGuests={unroomedGuests} />
+            <GuestsView
+              roomedGuests={roomedGuests}
+              unroomedGuests={unroomedGuests}
+            />
             <RoomsView rooms={rooms} />
             <StaffView staff={staff} />
           </TabbedView>
