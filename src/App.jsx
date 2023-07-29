@@ -53,24 +53,22 @@ const AppInterior = () => {
   }
 
   return (
-    <div className='background'>
-      <div className='container'>
-        <div className='app-col'>
-          <Title name={inn.name} />
-          <Inn inn={inn} />
-          <Time
-            currentDate={game.currentDate}
-            nextDay={() => processTimeStep()}
+    <div className='container'>
+      <div className='app-col'>
+        <Title name={inn.name} />
+        <Inn inn={inn} />
+        <Time
+          currentDate={game.currentDate}
+          nextDay={() => processTimeStep()}
+        />
+        <TabbedView tabs={['Guests', 'Rooms', 'Staff']}>
+          <GuestsView
+            roomedGuests={roomedGuests}
+            unroomedGuests={unroomedGuests}
           />
-          <TabbedView tabs={['Guests', 'Rooms', 'Staff']}>
-            <GuestsView
-              roomedGuests={roomedGuests}
-              unroomedGuests={unroomedGuests}
-            />
-            <RoomsView rooms={rooms} />
-            <StaffView staff={staff} />
-          </TabbedView>
-        </div>
+          <RoomsView rooms={rooms} />
+          <StaffView staff={staff} />
+        </TabbedView>
       </div>
     </div>
   )
