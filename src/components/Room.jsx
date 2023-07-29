@@ -6,7 +6,7 @@ const Room = ({ room }) => {
   const removeRoom = useGameStore((state) => state.removeRoom)
 
   return (
-    <div className='room glass flex-column p1'>
+    <div className='room glass app-col p-4'>
       <h3>Room {room.number}</h3>
 
       <DebugContainer>

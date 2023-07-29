@@ -6,7 +6,7 @@ const Staff = ({ staff }) => {
   const removeStaff = useGameStore((state) => state.removeStaff)
 
   return (
-    <div className='staff glass flex-column p1'>
+    <div className='staff glass app-col p-4'>
       <h3>{staff.name}</h3>
 
       <DebugContainer>

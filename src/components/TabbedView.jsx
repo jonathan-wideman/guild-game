@@ -10,10 +10,10 @@ const TabbedView = ({ children, tabs }) => {
 
   return (
     <>
-      <div className='flex-column'>
+      <div className='app-col'>
         <h2>{tabs[activeTab]}</h2>
 
-        <nav className='flex-row'>
+        <nav className='app-row'>
           {tabs.map((tab, index) => (
             <button
               key={tab}

@@ -1,8 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .app-col {
+    @apply flex flex-col gap-4;
+  }
+  .app-row {
+    @apply flex flex-row gap-4 justify-center items-center;
+  }
+}
+
 #root {
-  --size-025: 0.25rem;
-  --size-05: 0.5rem;
-  --size-1: 1rem;
-  --size-2: 2rem;
+  --size-1: 0.25rem;
+  --size-2: 0.5rem;
 }
 
 .background {
@@ -24,19 +35,19 @@
 }
 
 button {
-  padding: var(--size-05);
+  padding: var(--size-2);
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
   border: 1px solid transparent;
-  border-radius: var(--size-025);
+  border-radius: var(--size-1);
   background-color: #444;
   color: #eee;
   transition: border-color 0.25s;
 
   /* background: rgba(255, 255, 255, 0.2);
-  border-radius: var(--size-05);
+  border-radius: var(--size-2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -60,36 +71,9 @@ button:focus-visible {
 .glass {
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.2);
-  border-radius: var(--size-05);
+  border-radius: var(--size-2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.flex-column {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.flex-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.flex-grow {
-  flex-grow: 1;
-}
-
-.p1 {
-  padding: 1rem;
-}
-
-.p1v {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
 }

@@ -3,7 +3,7 @@ import Guest from './Guest'
 
 const GuestsView = ({ roomedGuests, unroomedGuests }) => {
   return (
-    <div className='guest-list flex-column'>
+    <div className='guest-list app-col'>
       {unroomedGuests.length > 0 ? (
         <>
           <h3>Unroomed</h3>

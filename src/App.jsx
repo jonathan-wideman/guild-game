@@ -55,7 +55,7 @@ const AppInterior = () => {
   return (
     <div className='background'>
       <div className='container'>
-        <div className='flex-column'>
+        <div className='app-col'>
           <Title name={inn.name} />
           <Inn inn={inn} />
           <Time

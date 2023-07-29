@@ -20,7 +20,7 @@ const Guest = ({ guest }) => {
   }
 
   return (
-    <div className='guest glass  flex-column p1'>
+    <div className='guest glass app-col p-4'>
       <h3>{guest.name}</h3>
 
       <DebugContainer>
