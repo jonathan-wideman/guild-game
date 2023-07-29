@@ -1,6 +1,6 @@
-import { createECS } from 'miniplex-react';
+import { createECS } from 'miniplex-react'
 
-export const ECS = createECS();
+export const ECS = createECS()
 
 // export const playerEntity = ECS.world.createEntity({
 //   label: 'player',
