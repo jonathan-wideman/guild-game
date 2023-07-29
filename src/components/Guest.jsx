@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import { getOccupancy, getRoomById, useGameStore } from '../store/store'
 import { DebugContainer } from './DebugContainer'
 import RoomBrief from './RoomBrief'
+import Button from './atoms/Button'
 
 const Guest = ({ guest }) => {
   const guests = useGameStore((state) => state.guests)
@@ -24,7 +25,7 @@ const Guest = ({ guest }) => {
       <h3>{guest.name}</h3>
 
       <DebugContainer>
-        <button onClick={() => removeGuest(guest.id)}>delete</button>
+        <Button onClick={() => removeGuest(guest.id)}>delete</Button>
       </DebugContainer>
 
       <div>
@@ -32,7 +33,7 @@ const Guest = ({ guest }) => {
         {guest.roomId ? (
           <RoomBrief room={getRoomById(rooms, guest.roomId)} />
         ) : empty.length > 0 ? (
-          <button onClick={() => assignRoom(guest)}>Assign Room</button>
+          <Button onClick={() => assignRoom(guest)}>Assign Room</Button>
         ) : (
           <>No available rooms</>
         )}

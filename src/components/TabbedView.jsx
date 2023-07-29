@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { classNames } from '../util/util'
+import Button from './atoms/Button'
 
 const TabbedView = ({ children, tabs }) => {
   const [activeTab, setActiveTab] = useState(0)
@@ -15,7 +16,7 @@ const TabbedView = ({ children, tabs }) => {
 
         <nav className='app-row'>
           {tabs.map((tab, index) => (
-            <button
+            <Button
               key={tab}
               onClick={() => changeTab(index)}
               className={classNames(
@@ -24,7 +25,7 @@ const TabbedView = ({ children, tabs }) => {
               )}
             >
               {tab}
-            </button>
+            </Button>
           ))}
         </nav>
       </div>

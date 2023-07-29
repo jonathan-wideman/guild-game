@@ -1,6 +1,7 @@
 import React from 'react'
 import { useGameStore } from '../store/store'
 import { DebugContainer } from './DebugContainer'
+import Button from './atoms/Button'
 
 const Room = ({ room }) => {
   const removeRoom = useGameStore((state) => state.removeRoom)
@@ -10,7 +11,7 @@ const Room = ({ room }) => {
       <h3>Room {room.number}</h3>
 
       <DebugContainer>
-        <button onClick={() => removeRoom(room.id)}>delete</button>
+        <Button onClick={() => removeRoom(room.id)}>delete</Button>
       </DebugContainer>
 
       <div>Type: {room.type}</div>

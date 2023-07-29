@@ -1,6 +1,7 @@
-@tailwind base;
+/* @tailwind base; */
 @tailwind components;
-@tailwind utilities;
+/* @tailwind utilities; */
+@tailwind variants;
 
 @layer components {
   .app-col {
@@ -14,7 +15,7 @@
 :root {
   --size-1: 0.25rem;
   --size-2: 0.5rem;
-  
+
   /* background-image: url('interior.jpg'); */
   /* background-repeat: no-repeat; */
   /* background-size: contain; */
@@ -34,7 +35,7 @@
   text-align: center;
 }
 
-button {
+.btn {
   padding: var(--size-2);
   font-size: 1em;
   font-weight: 500;
@@ -54,17 +55,17 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.3); */
 }
 
-button.active {
+.btn.active {
   background-color: #eee;
   color: #333;
 }
 
-button:hover {
+.btn:hover {
   border-color: #eee;
 }
 
-button:focus,
-button:focus-visible {
+.btn:focus,
+.btn:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 

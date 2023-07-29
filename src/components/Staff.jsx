@@ -1,6 +1,7 @@
 import React from 'react'
 import { useGameStore } from '../store/store'
 import { DebugContainer } from './DebugContainer'
+import Button from './atoms/Button'
 
 const Staff = ({ staff }) => {
   const removeStaff = useGameStore((state) => state.removeStaff)
@@ -10,7 +11,7 @@ const Staff = ({ staff }) => {
       <h3>{staff.name}</h3>
 
       <DebugContainer>
-        <button onClick={() => removeStaff(staff.id)}>delete</button>
+        <Button onClick={() => removeStaff(staff.id)}>delete</Button>
       </DebugContainer>
 
       <div>Role: {staff.role}</div>
