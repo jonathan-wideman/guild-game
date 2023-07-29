@@ -53,7 +53,7 @@ const AppInterior = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='container p-2 text-center'>
       <div className='app-col'>
         <Title name={inn.name} />
         <Inn inn={inn} />
