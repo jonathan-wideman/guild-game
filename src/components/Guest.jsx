@@ -1,26 +1,26 @@
-import React, { useMemo } from 'react';
-import { getOccupancy, getRoomById, useGameStore } from '../store/store';
-import { DebugContainer } from './DebugContainer';
-import RoomBrief from './RoomBrief';
+import React, { useMemo } from 'react'
+import { getOccupancy, getRoomById, useGameStore } from '../store/store'
+import { DebugContainer } from './DebugContainer'
+import RoomBrief from './RoomBrief'
 
 const Guest = ({ guest }) => {
-  const guests = useGameStore((state) => state.guests);
-  const rooms = useGameStore((state) => state.rooms);
-  const removeGuest = useGameStore((state) => state.removeGuest);
-  const assignGuestToRoom = useGameStore((state) => state.assignGuestToRoom);
+  const guests = useGameStore((state) => state.guests)
+  const rooms = useGameStore((state) => state.rooms)
+  const removeGuest = useGameStore((state) => state.removeGuest)
+  const assignGuestToRoom = useGameStore((state) => state.assignGuestToRoom)
 
   const guestsRooms = useMemo(
     () => getOccupancy(guests, rooms),
     [guests, rooms]
-  );
-  const { empty } = guestsRooms;
+  )
+  const { empty } = guestsRooms
 
   const assignRoom = (guest) => {
-    assignGuestToRoom(guest.id, empty?.[0]?.roomId);
-  };
+    assignGuestToRoom(guest.id, empty?.[0]?.roomId)
+  }
 
   return (
-    <div className="guest glass  flex-column p1">
+    <div className='guest glass  flex-column p1'>
       <h3>{guest.name}</h3>
 
       <DebugContainer>
@@ -45,7 +45,7 @@ const Guest = ({ guest }) => {
       {/* <div>Room Type: {guest.preferences.roomType}</div> */}
       {/* <div>Food: {guest.preferences.food}</div> */}
     </div>
-  );
-};
+  )
+}
 
-export default Guest;
+export default Guest

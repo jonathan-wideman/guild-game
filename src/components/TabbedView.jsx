@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { classNames } from '../util/util';
+import React, { useState } from 'react'
+import { classNames } from '../util/util'
 
 const TabbedView = ({ children, tabs }) => {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(0)
 
   const changeTab = (index) => {
-    setActiveTab(index);
-  };
+    setActiveTab(index)
+  }
 
   return (
     <>
-      <div className="flex-column">
+      <div className='flex-column'>
         <h2>{tabs[activeTab]}</h2>
 
-        <nav className="flex-row">
+        <nav className='flex-row'>
           {tabs.map((tab, index) => (
             <button
               key={tab}
@@ -31,7 +31,7 @@ const TabbedView = ({ children, tabs }) => {
 
       {children[activeTab]}
     </>
-  );
-};
+  )
+}
 
-export default TabbedView;
+export default TabbedView

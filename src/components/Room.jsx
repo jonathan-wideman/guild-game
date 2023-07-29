@@ -1,12 +1,12 @@
-import React from 'react';
-import { useGameStore } from '../store/store';
-import { DebugContainer } from './DebugContainer';
+import React from 'react'
+import { useGameStore } from '../store/store'
+import { DebugContainer } from './DebugContainer'
 
 const Room = ({ room }) => {
-  const removeRoom = useGameStore((state) => state.removeRoom);
+  const removeRoom = useGameStore((state) => state.removeRoom)
 
   return (
-    <div className="room glass flex-column p1">
+    <div className='room glass flex-column p1'>
       <h3>Room {room.number}</h3>
 
       <DebugContainer>
@@ -17,7 +17,7 @@ const Room = ({ room }) => {
       <div>Availability: {room.availability ? 'Available' : 'Occupied'}</div>
       <div>Price: ${room.price} per night</div>
     </div>
-  );
-};
+  )
+}
 
-export default Room;
+export default Room

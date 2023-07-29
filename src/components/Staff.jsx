@@ -1,12 +1,12 @@
-import React from 'react';
-import { useGameStore } from '../store/store';
-import { DebugContainer } from './DebugContainer';
+import React from 'react'
+import { useGameStore } from '../store/store'
+import { DebugContainer } from './DebugContainer'
 
 const Staff = ({ staff }) => {
-  const removeStaff = useGameStore((state) => state.removeStaff);
+  const removeStaff = useGameStore((state) => state.removeStaff)
 
   return (
-    <div className="staff glass flex-column p1">
+    <div className='staff glass flex-column p1'>
       <h3>{staff.name}</h3>
 
       <DebugContainer>
@@ -20,7 +20,7 @@ const Staff = ({ staff }) => {
       <div>Energy: {staff.energy}</div>
       <div>Experience: {staff.experience}</div>
     </div>
-  );
-};
+  )
+}
 
-export default Staff;
+export default Staff

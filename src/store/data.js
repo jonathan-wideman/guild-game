@@ -1,13 +1,13 @@
 export const initialGameState = {
   currentDate: new Date(),
-};
+}
 
 export const initialInn = {
   name: "The Adventurer's Rest",
   level: 1,
   money: 0,
   capacity: 10,
-};
+}
 
 export const initialRooms = [
   {
@@ -27,7 +27,7 @@ export const initialRooms = [
     price: 80,
   },
   // Add more rooms as needed
-];
+]
 
 export const initialGuests = [
   {
@@ -70,7 +70,7 @@ export const initialGuests = [
     },
   },
   // Add more guests as needed
-];
+]
 
 export const initialStaff = [
   {
@@ -94,4 +94,4 @@ export const initialStaff = [
     experience: 0,
   },
   // Add more staff members as needed
-];
+]

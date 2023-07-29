@@ -1,9 +1,9 @@
-import React from 'react';
-import Guest from './Guest';
+import React from 'react'
+import Guest from './Guest'
 
 const GuestsView = ({ roomedGuests, unroomedGuests }) => {
   return (
-    <div className="guest-list flex-column">
+    <div className='guest-list flex-column'>
       {unroomedGuests.length > 0 ? (
         <>
           <h3>Unroomed</h3>
@@ -22,7 +22,7 @@ const GuestsView = ({ roomedGuests, unroomedGuests }) => {
         </>
       ) : null}
     </div>
-  );
-};
+  )
+}
 
-export default GuestsView;
+export default GuestsView
